@@ -6,8 +6,8 @@ body{
 }
 .container{
     display: inline-block;
-    justify-content: space-between; /* Horizontal alignment */
-    height: 100vh; /* Make the container full height of the viewport */
+    justify-content: space-between; 
+    height: 100vh; 
 }
 
 .card{
@@ -86,12 +86,12 @@ body{
 }
 
 .select{
-    padding: 10px 20px; /* Adjust padding as needed */
-    background-color: #007bff; /* Button background color */
-    color: #fff; /* Button text color */
-    border: none; /* Remove button border */
-    border-radius: 5px; /* Add rounded corners */
-    cursor: pointer; /* Change cursor to pointer on hover */    
+    padding: 10px 20px; 
+    background-color: #007bff; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
 }
 
 .select:hover{
