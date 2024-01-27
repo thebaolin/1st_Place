@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Tasty Bites",
+    "rating": 4.5,
+    "location": "123 Main Street, Cityville",
+    "price": "$$",
+    "cuisine": "Italian",
+    "image": "https://i5.walmartimages.com/seo/TY-Beanie-Boos-ROOTBEER-the-Brown-Dog-Glitter-Eyes-Regular-Size-6-inch_d6505b98-c0da-4f4f-a7c2-b74ecfade265.a99458c06cc79ab1d15924af6b9fca68.jpeg"
+  },
+  {
+    "name": "Spicy Grill",
+    "rating": 3.8,
+    "location": "456 Oak Avenue, Townburg",
+    "price": "$$$",
+    "cuisine": "Mexican",
+    "image": "https://i5.walmartimages.com/seo/TY-Beanie-Boos-ROOTBEER-the-Brown-Dog-Glitter-Eyes-Regular-Size-6-inch_d6505b98-c0da-4f4f-a7c2-b74ecfade265.a99458c06cc79ab1d15924af6b9fca68.jpeg"
+  },
+  {
+    "name": "Sushi Delight",
+    "rating": 4.2,
+    "location": "789 Pine Lane, Villagetown",
+    "price": "$$$",
+    "cuisine": "Japanese",
+    "image": "https://i5.walmartimages.com/seo/TY-Beanie-Boos-ROOTBEER-the-Brown-Dog-Glitter-Eyes-Regular-Size-6-inch_d6505b98-c0da-4f4f-a7c2-b74ecfade265.a99458c06cc79ab1d15924af6b9fca68.jpeg"
+  },
+  {
+    "name": "Cheesy Pizza Palace",
+    "rating": 4.0,
+    "location": "101 Cedar Road, Hamletville",
+    "price": "$",
+    "cuisine": "Pizza",
+    "image": "https://i.etsystatic.com/25592275/r/il/94c232/2825854711/il_340x270.2825854711_kqo6.jpg"
+  },
+  {
+    "name": "Burger Haven",
+    "rating": 4.1,
+    "location": "202 Elm Street, Suburbia",
+    "price": "$$",
+    "cuisine": "American",
+    "image": "https://i.ebayimg.com/images/g/o~gAAOSwTG1lEDMW/s-l1200.webp"
+  }
+]
