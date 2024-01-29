@@ -1,0 +1,30 @@
+.holder {
+    margin-top: 25vh;
+    margin-left: 20vw;
+}
+.card {
+    border: 2px solid red;
+    border-radius: 10px;
+    width: 25vw;
+    height: 40vh;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    background-color: black;
+    
+}
+
+.button-text {
+    color:white;
+}
+
+.home-container {
+    margin-top: 45vh;
+    margin-left: 45vw;
+}
+
+.begin-button {
+    height: 5vh;
+    width: 5vw;
+    font-size: large;
+}

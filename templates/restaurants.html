@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/css/styles.css">
+        <title> Restaurants</title>
+    </head>
+    <body>
+        <div class="holder">
+            <form action="/choose" method="post">
+                <button type="submit" name="restaurant" value="{{ given[0] }}" class="card">
+                    <h2 class="button-text">{{ given[0] }}</h2>
+                </button>
+
+                <button type="submit" name="restaurant" value="{{ given[1] }}" class="card">
+                    <h2 class="button-text">{{ given[1] }}</h2>
+                </button>
+            </form>
+        </div>
+    </body>
+</html>
