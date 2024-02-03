@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script async src="https://maps.googleapis.com/maps/api/js?key={{api_key}}&loading=async&libraries=places&callback=initAutocomplete">
+  </script>
+  <script>
+    let autocomplete;
+    function initAutocomplete(){
+      autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'),
+      {
+        // types: ['establishment'],
+        componentRestriction: {'country': ['US']},
+        fields: ['name']
+      });
+
+      autocomplete.addListener('place_changed', onPlaceChanged);
+    }
+
+    function onPlaceChanged(){
+      var place = autocomplete.getPlace();
+      document.getElementById('autocomplete').innerHTML = place.name;
+    }
+  </script>
+
+</head>
+<body>
+  <form action = "/" method = "POST">
+    <input id = "autocomplete" name = "location" placeholder="Enter desired location" type = "text" />  
+
+    <button type = "submit">Next</button>
+  </form>
+</body>
+</html>
