@@ -1,7 +1,38 @@
-{% extends "base.html" %}
+<!doctype html>
+<html>
+  <head>
+  <title>{% block title %}This or That {% endblock %}</title>
+  <style>
+    .choices{
+        margin:auto; 
+        padding:2rem;  
+        padding-left: 32rem;
+    }
+    h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    body{
+    background-color: beige;
+    }
+
+  </style>
+
+  </head>
+
+<body>
 {% block content %}
 <!-- HTML code goes in here-->
 <h1>This or That</h1>
-  <a href = "{{url_for('base')}}" class="btn btn-secondary">choose this or that</a>
-
+<form class = "choices" method="post" action="{{ url_for('result') }}">
+        {{ form.hidden_tag() }}
+        <div>{{ form.options.label }}</div>
+        <br>
+        <div>{{ form.options(size=5) }}</div>
+        <br>
+        <input type="submit" value="Submit" >
+    </form>
 {% endblock %}
+</body>
+</html>
