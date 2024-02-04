@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+    <!--custom css-->
+    <link rel="stylesheet" href="{{  url_for ('static', filename = 'style.css')}}">
+    
+{% block content %}
+<!-- HTML code goes in here-->
+
+<h1>This or That</h1>
+
+  <a href = "{{url_for('index')}}" class="btn btn-secondary">Go back Homepage</a>
+
+{% endblock %}
+
+</html>
