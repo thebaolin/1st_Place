@@ -23,14 +23,32 @@
       var place = autocomplete.getPlace();
       document.getElementById('autocomplete').innerHTML = place.name;
     }
+
+    function getLocationAndSubmitForm() {
+        getLocation(function(position) {
+            document.getElementById("latitude").value = position.coords.latitude;
+            document.getElementById("longitude").value = position.coords.longitude;
+            document.getElementById("current").submit();
+      });
+    }
+
+    function getLocation(callback) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(callback);
+        }
+    }
   </script>
 
 </head>
 <body>
-  <form action = "/" method = "POST">
-    <input id = "autocomplete" name = "location" placeholder="Enter desired location" type = "text" />  
-
-    <button type = "submit">Next</button>
+  <form action="/" method="POST">
+    <input id="autocomplete" name="location" placeholder="Enter desired location" type="text" />  
+    <button type="submit">Next</button>
+  </form>
+  <form id = "current" action = "/current-location" method = "POST">
+    <input type = "hidden" id = "latitude" name = "latitude">
+    <input type = "hidden" id = "longitude" name = "longitude">
+    <button type = "button" onclick = "getLocationAndSubmitForm()">Use Current Location</button>
   </form>
 </body>
 </html>
