@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 def initialize_lists():
     global restaurants, choices, round_num
-    restaurants = ["A", "B", "C", "D"]
+    restaurants = ["A", "B", "C", "D", "E", "F"]
     choices = []
     round_num = 1
 
@@ -34,6 +34,10 @@ def choose():
 
         restaurants.pop(0)
         restaurants.pop(0)
+
+        if len(restaurants) == 1:
+            choices.append(restaurants[0])
+            restaurants.pop(0)
 
         if restaurants:
             curr = restaurants[:2]
