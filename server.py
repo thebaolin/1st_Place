@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request
 import requests
 import config
+from location import Location
 
 app = Flask(__name__)
 api_key = config.API_KEY
+list = []
 
 @app.route('/', methods = ['GET', 'POST'])
 def home():
@@ -11,6 +13,14 @@ def home():
         input_value = request.form.get('location')
         latitude, longitude = geocode(input_value)
         data = getJSON(latitude, longitude)
+        locations = data['places']
+        for place in locations:
+            pics = []
+            for pic in place['photos']:
+                pics.append(pic['name'])
+            tmp = Location(place['displayName']['text'], place['formattedAddress'], place['rating'], place['userRatingCount'], place['primaryType'], pics)
+            list.append(tmp)
+
     return render_template("index.html", api_key = api_key)
 
 @app.route('/current-location', methods = ['POST'])
@@ -19,14 +29,13 @@ def getNearBy():
         latitude = request.form.get('latitude')
         longitude = request.form.get('longitude')
         data = getJSON(latitude, longitude)
-        return f'{latitude}, {longitude}'
     return render_template("index.html", api_key = api_key)
 
 def getJSON(latitude, longitude):
     URL = "https://places.googleapis.com/v1/places:searchNearby"
     payload = {
         'includedTypes' : ['japanese_restaurant'],
-        'maxResultCount' : 20,
+        'maxResultCount' : 2,
         'locationRestriction' : {
             "circle": {
                 "center": {
@@ -41,11 +50,10 @@ def getJSON(latitude, longitude):
     headers = {
         'Content-Type': 'application/json',
         'X-Goog-Api-Key': api_key,
-        'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.primaryType'
+        'X-Goog-FieldMask': 'places.rating,places.userRatingCount,places.displayName,places.formattedAddress,places.primaryType,places.photos'
     }
 
     response = requests.post(URL, json=payload, headers=headers)
-    print(response.json())
     return response.json()
 
 def geocode(address):
