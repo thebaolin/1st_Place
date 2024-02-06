@@ -1,0 +1,47 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to bottom right, #ff7e5f, #feb47b); /* Gradient background */
+  }
+  
+  .options-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .option {
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+    border: none;
+    border-radius: 50%; /* Circular shape */
+    width: 80px;
+    height: 80px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+  
+  .option:hover {
+    background-color: rgba(255, 255, 255, 0.7); /* Lighter color on hover */
+  }
+  
+  .option.selected {
+    background-color: rgba(255, 255, 255, 0.9); /* Darker color for selected option */
+  }
+  
+  .next-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .next-button:hover {
+    background-color: #ddd;
+  }
+  
