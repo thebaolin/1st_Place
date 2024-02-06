@@ -13,6 +13,15 @@ def home():
         data = getJSON(latitude, longitude)
     return render_template("index.html", api_key = api_key)
 
+@app.route('/current-location', methods = ['POST'])
+def getNearBy():
+    if request.method == "POST":
+        latitude = request.form.get('latitude')
+        longitude = request.form.get('longitude')
+        data = getJSON(latitude, longitude)
+        return f'{latitude}, {longitude}'
+    return render_template("index.html", api_key = api_key)
+
 def getJSON(latitude, longitude):
     URL = "https://places.googleapis.com/v1/places:searchNearby"
     payload = {
@@ -32,7 +41,7 @@ def getJSON(latitude, longitude):
     headers = {
         'Content-Type': 'application/json',
         'X-Goog-Api-Key': api_key,
-        'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.primaryType,places.photos'
+        'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.primaryType'
     }
 
     response = requests.post(URL, json=payload, headers=headers)
