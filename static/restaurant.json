@@ -3,16 +3,26 @@
         "name" : "To Date",
         "review" : "101",
         "Location" : "768 57th St, Brooklyn, NY 11220",
-        "imagesurl" : "https://img.freepik.com/free-photo/chicken-wings-barbecue-sweetly-sour-sauce-picnic-summer-menu-tasty-food-top-view-flat-lay_2829-6471.jpg",
+        "rating_star": 3,
+        "imagesurl" : "https://fastly.4sqi.net/img/general/600x600/139176073_e6Ti1MkOfy0C99K0-wcEiTHTygOQicFQ9G9Yw9b5sXc.jpg",
         "prices" : "$$",
+        "googlelocation:" : "https://www.google.com/maps/place/To+date/@40.6373368,-74.0085175,17z/data=!4m6!3m5!1s0x89c245f96a329afd:0xfb35e59aedbb57b!8m2!3d40.6373368!4d-74.0085175!16s%2Fg%2F11qqhw9zk8?entry=ttu",
+        "galleryurl": [ "https://patch.com/img/cdn20/users/23562214/20210701/034533/styles/patch_image/public/best-sushi-midtown-nyc-eater___01154521971.jpg", 
+                        "https://mrtsbakery.com.au/cdn/shop/articles/unnamed_388f2e43-0619-438d-9212-2539bf2c70d5_800x.jpg?v=1578206798",
+                        "https://website-cdn.menusifu.com/wp-content/uploads/todatebrooklyn.com/2023/08/7.jpg"],
         "cusine" : "Japanese Restaurant"
     },
     {
         "name" : "To Date",
         "review" : "101",
         "Location" : "768 57th St, Brooklyn, NY 11220",
-        "imagesurl" : "https://img.freepik.com/free-photo/chicken-wings-barbecue-sweetly-sour-sauce-picnic-summer-menu-tasty-food-top-view-flat-lay_2829-6471.jpg",
-        "prices" : "$$$",
+        "rating_star": 1,
+        "imagesurl" : "https://fastly.4sqi.net/img/general/600x600/139176073_e6Ti1MkOfy0C99K0-wcEiTHTygOQicFQ9G9Yw9b5sXc.jpg",
+        "prices" : "$$$$",
+        "googlelocation:" : "https://www.google.com/maps/place/To+date/@40.6373368,-74.0085175,17z/data=!4m6!3m5!1s0x89c245f96a329afd:0xfb35e59aedbb57b!8m2!3d40.6373368!4d-74.0085175!16s%2Fg%2F11qqhw9zk8?entry=ttu",
+        "galleryurl": [ "https://patch.com/img/cdn20/users/23562214/20210701/034533/styles/patch_image/public/best-sushi-midtown-nyc-eater___01154521971.jpg", 
+                        "https://mrtsbakery.com.au/cdn/shop/articles/unnamed_388f2e43-0619-438d-9212-2539bf2c70d5_800x.jpg?v=1578206798",
+                        "https://website-cdn.menusifu.com/wp-content/uploads/todatebrooklyn.com/2023/08/7.jpg"],
         "cusine" : "Japanese Restaurant"
     }
 ]
