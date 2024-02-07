@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import requests
 import config
 from location import Location
@@ -24,17 +24,22 @@ def home():
     return render_template("index.html", api_key = api_key)
 
 @app.route('/current-location', methods = ['POST'])
-def getNearBy():
+ef getNearBy():
     if request.method == "POST":
+        selected_options = request.json.get('selectedOptions')
         latitude = request.form.get('latitude')
         longitude = request.form.get('longitude')
-        data = getJSON(latitude, longitude)
-    return render_template("index.html", api_key = api_key)
+        data = getJSON(selected_options, latitude, longitude)
+        # Process the data from the Google Places API
+        return jsonify(data)
+    else:
+        # Return an error response if the request method is not POST
+        return jsonify({'error': 'Invalid request method'})
 
 def getJSON(latitude, longitude):
     URL = "https://places.googleapis.com/v1/places:searchNearby"
     payload = {
-        'includedTypes' : ['japanese_restaurant'],
+        'includedTypes' : selected_options,
         'maxResultCount' : 2,
         'locationRestriction' : {
             "circle": {

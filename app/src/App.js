@@ -2,18 +2,23 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
+
+
   const categories = ['Japanese', 'Korean', 'Fast Food', 'Italian', 'Mexican', 'Indian', 'Chinese'];
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState([]);
 
   const handleCategoryClick = (category) => {
-    if (selectedCategories.includes(category)) {
-      setSelectedCategories(selectedCategories.filter(item => item !== category));
+    const formattedCategory = `${category.toLowerCase().replace(/\s+/g, '_')}_restaurant`;
+    
+    if (selectedOptions.includes(formattedCategory)) {
+      setSelectedOptions(selectedOptions.filter(item => item !== formattedCategory));
     } else {
-      setSelectedCategories([...selectedCategories, category]);
+      setSelectedOptions([...selectedOptions, formattedCategory]);
     }
   };
 
   useEffect(() => {
+    console.log(selectedOptions); // print the list of selected options
     const circles = document.querySelectorAll('.circle');
 
     circles.forEach((circle, index) => {
@@ -26,17 +31,18 @@ function App() {
       circle.style.left = `calc(50% + ${x}px)`;
       circle.style.top = `calc(50% + ${y}px)`;
     });
-  }, [selectedCategories]);
+  }, [selectedOptions]);
 
   const handleSurpriseMeClick = () => {
     const randomIndex = Math.floor(Math.random() * categories.length);
     const randomCategory = categories[randomIndex];
     
-    //if no category is selected, just select one randomly
-    if (selectedCategories.length === 0) {
-      setSelectedCategories([randomCategory]);
+    const formattedCategory = `${randomCategory.toLowerCase().replace(/\s+/g, '_')}_restaurant`;
+    
+    if (selectedOptions.length === 0) {
+      setSelectedOptions([formattedCategory]);
     } else {
-      setSelectedCategories([...selectedCategories, randomCategory]);
+      setSelectedOptions([...selectedOptions, formattedCategory]);
     }
   };
 
@@ -46,14 +52,14 @@ function App() {
       {categories.map((category, index) => (
         <div
           key={index}
-          className={`circle ${selectedCategories.includes(category) ? 'selected' : ''}`}
+          className={`circle ${selectedOptions.includes(`${category.toLowerCase().replace(/\s+/g, '_')}_restaurant`) ? 'selected' : ''}`}
           onClick={() => handleCategoryClick(category)}
         >
           {category}
         </div>
       ))}
       
-      {/*render surprise me circle */}
+      {/* render the "Surprise Me" circle */}
       <div
         className="circle surprise-circle"
         onClick={handleSurpriseMeClick}

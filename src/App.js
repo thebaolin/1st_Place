@@ -1,5 +1,7 @@
+// App.js
+
 import React, { useState } from 'react';
-import './App.css'; 
+import './App.css';
 
 function App() {
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -13,7 +15,21 @@ function App() {
   };
 
   const handleNextPage = () => {
-    // Implement your logic to navigate to the next page (using Flask backend)
+    // Send selected options to the backend
+    fetch('/current-location', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ selectedOptions })
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Handle response from the backend, e.g., navigate to the next page
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
   };
 
   return (
