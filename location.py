@@ -1,15 +1,15 @@
 import config
 
 class Location:
-    def __init__(self, name, address, rating, totalRating, type, photos):
+    def __init__(self, name, address, rating, totalRating, type, restaurantPic, photos):
         self.name = name
         self.address = address
         self.rating = rating
         self.totalRating = totalRating
+        self.restaurantPic = restaurantPic
         self.photos = self.createURL(photos)
         words = type.split('_')
         self.type = words[0].capitalize()
-        print(self.photos)
 
     def createURL(self, photos):
         tmp = []
