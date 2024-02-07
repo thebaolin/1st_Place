@@ -18,7 +18,7 @@ def home():
             pics = []
             for pic in place['photos'][1:]:
                 pics.append(pic['name'])
-            tmp = Location(place['displayName']['text'], place['formattedAddress'], place['rating'], place['userRatingCount'], place['primaryType'], f"https://places.googleapis.com/v1/{place['photos'][0]['name']}/media?maxHeightPx=400&maxWidthPx=400&key={api_key}", pics)
+            tmp = Location(place['displayName']['text'], place['formattedAddress'], place['rating'], place['userRatingCount'], place['primaryType'], f"https://places.googleapis.com/v1/{place['photos'][0]['name']}/media?maxHeightPx=400&maxWidthPx=400&key={api_key}", pics, place['priceLevel'])
             list.append(tmp)
 
     return render_template("index.html", api_key = api_key)
@@ -50,10 +50,11 @@ def getJSON(latitude, longitude):
     headers = {
         'Content-Type': 'application/json',
         'X-Goog-Api-Key': api_key,
-        'X-Goog-FieldMask': 'places.rating,places.userRatingCount,places.displayName,places.formattedAddress,places.primaryType,places.photos'
+        'X-Goog-FieldMask': 'places.rating,places.userRatingCount,places.displayName,places.formattedAddress,places.primaryType,places.photos,places.priceLevel'
     }
 
     response = requests.post(URL, json=payload, headers=headers)
+    print(response.json())
     return response.json()
 
 def geocode(address):
