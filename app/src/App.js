@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-
-
   const categories = ['Japanese', 'Korean', 'Fast Food', 'Italian', 'Mexican', 'Indian', 'Chinese'];
   const [selectedOptions, setSelectedOptions] = useState([]);
 
@@ -18,7 +16,7 @@ function App() {
   };
 
   useEffect(() => {
-    console.log(selectedOptions); // print the list of selected options
+    console.log(selectedOptions); // Print the list of selected options
     const circles = document.querySelectorAll('.circle');
 
     circles.forEach((circle, index) => {
@@ -46,9 +44,13 @@ function App() {
     }
   };
 
+  const handleRedirectClick = () => {
+    window.location.href = 'http://localhost:8000';
+  };
+
   return (
     <div className="app">
-      {/* render circles for each category */}
+      {/* Render circles for each category */}
       {categories.map((category, index) => (
         <div
           key={index}
@@ -66,6 +68,9 @@ function App() {
       >
         Surprise Me
       </div>
+
+      {/* button to redirect */}
+      <button className="redirect-button" onClick={handleRedirectClick}>Submit</button>
     </div>
   );
 }
