@@ -51,7 +51,14 @@ def getNearBy():
         latitude = request.form.get('latitude')
         longitude = request.form.get('longitude')
         data = getJSON(latitude, longitude)
-    return render_template("index.html", api_key = api_key)
+        locations = data['places']
+        for place in locations:
+            pics = []
+            for pic in place['photos'][1:]:
+                pics.append(pic['name'])
+            tmp = Location(place['displayName']['text'], place['formattedAddress'], place['rating'], place['userRatingCount'], place['primaryType'], f"https://places.googleapis.com/v1/{place['photos'][0]['name']}/media?maxHeightPx=400&maxWidthPx=400&key={api_key}", pics, place['priceLevel'])
+            list.append(tmp)
+        return redirect(url_for('choose'))
 
 def getJSON(latitude, longitude):
     URL = "https://places.googleapis.com/v1/places:searchNearby"
