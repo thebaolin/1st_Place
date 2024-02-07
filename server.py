@@ -62,6 +62,7 @@ def getJSON(latitude, longitude):
     }
 
     response = requests.post(URL, json=payload, headers=headers)
+    print(response.json())
     return response.json()
 
 def geocode(address):
