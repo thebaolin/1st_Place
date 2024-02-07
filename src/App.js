@@ -16,7 +16,7 @@ function App() {
 
   const handleNextPage = () => {
     // Send selected options to the backend
-    fetch('/current-location', {
+    fetch('/api/data', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ function App() {
     })
     .then(response => response.json())
     .then(data => {
-      // Handle response from the backend, e.g., navigate to the next page
+        console.log(data); // Handle the response data
     })
     .catch(error => {
       console.error('Error:', error);
@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Welcome to Restaurant This or That!</h1>
+      <h1>This or That!</h1>
       <div className="options-container">
         <button className={`option ${selectedOptions.includes('Japanese') ? 'selected' : ''}`} onClick={() => handleOptionClick('Japanese')}>Japanese</button>
         <button className={`option ${selectedOptions.includes('Korean') ? 'selected' : ''}`} onClick={() => handleOptionClick('Korean')}>Korean</button>

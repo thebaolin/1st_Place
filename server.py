@@ -32,10 +32,17 @@ def getNearBy():
         return f'{latitude}, {longitude}'
     return render_template("index.html", api_key = api_key)
 
+@app.route('/api/data', methods=['POST'])
+def handledata():
+    data = request.json
+    # Process the data as needed
+    print(jsonify(data))
+    return jsonify(data), 200, {'Content-Type': 'application/json'}
+
 def getJSON(latitude, longitude):
     URL = "https://places.googleapis.com/v1/places:searchNearby"
     payload = {
-        'includedTypes' : selected_options,
+        'includedTypes' : handledata(),
         'maxResultCount' : 2,
         'locationRestriction' : {
             "circle": {
@@ -76,7 +83,6 @@ def geocode(address):
         print(f"Failed to geocode address. Status code: {response.status_code}")
 
 
+
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", port = 8000)
-
-    
