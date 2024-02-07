@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 import requests
 import config
 import random
@@ -13,8 +13,22 @@ def initialize_lists():
     choices = []
     round_num = 1
 
-@app.route('/', methods = ['GET', 'POST'])
+@app.route('/', methods=['GET','POST'])
 def home():
+    return render_template("types.html")
+
+@app.route('/cuisines', methods = ['POST'])
+def cuisines():
+    global selected_cuisines
+    selected_cuisines = request.form.getlist('restaurant')
+    jsonify(selected_cuisines)
+    print(selected_cuisines)
+    return redirect(url_for('getLocation'))
+
+    
+@app.route('/get-location', methods = ['GET', 'POST'])
+def getLocation():
+
     if request.method == "POST":
         initialize_lists()
         input_value = request.form.get('location')
@@ -42,7 +56,7 @@ def getNearBy():
 def getJSON(latitude, longitude):
     URL = "https://places.googleapis.com/v1/places:searchNearby"
     payload = {
-        'includedTypes' : ['japanese_restaurant'],
+        'includedTypes' : selected_cuisines,
         'maxResultCount' : 20,
         'locationRestriction' : {
             "circle": {
