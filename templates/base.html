@@ -15,51 +15,82 @@
 {% for restaurant in data %}
   <div class="row g-2">
     <div class="col">
-      <div class="card h-100" style="width: 24rem;">
+      <div class="card">
 
         <img src = {{restaurant.imagesurl}} alt = "Image" class = "card-image"> 
 
         <div class="card-body">
 
         <h5 class="card-title">{{restaurant.name}}</h5>
-            <img src = "{{url_for('static', filename = 'images/Full_Star.png')}}" class = "rating" alt ="Image">
-            <img src = "{{url_for('static', filename = 'images/Full_Star.png')}}" class = "rating" alt ="Image">
-            <img src = "{{url_for('static', filename = 'images/Full_Star.png')}}" class = "rating" alt ="Image">
-            <img src = "{{url_for('static', filename = 'images/Half_Star.png')}}" class = "rating" alt ="Image">
-            <img src = "{{url_for('static', filename = 'images/Empty_Star.png')}}" class = "rating" alt ="Image">
-            <span>{{restaurant.review}}</span>
+        {% if (restaurant.rating_star < 0) %}
+        <img src = "{{url_for('static', filename = 'images/Empty_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Empty_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Empty_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Empty_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Empty_Star.png')}}" class = "rating" alt ="Image">
+        {% endif %}
+        {% if (restaurant.rating_star == 1)  %}
+        <img src = "{{url_for('static', filename = 'images/Full_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Empty_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Empty_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Empty_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Empty_Star.png')}}" class = "rating" alt ="Image">
+        {% endif %}
+        {% if restaurant.rating_star == 2 %}
+        <img src = "{{url_for('static', filename = 'images/Full_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Full_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Empty_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Empty_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Empty_Star.png')}}" class = "rating" alt ="Image">
+        {% endif %}
+        {% if restaurant.rating_star == 3 %}
+        <img src = "{{url_for('static', filename = 'images/Full_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Full_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Full_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Empty_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Empty_Star.png')}}" class = "rating" alt ="Image">
+        {% endif %}
+        {% if restaurant.rating_star == 4 %}
+        <img src = "{{url_for('static', filename = 'images/Full_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Full_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Full_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Full_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Empty_Star.png')}}" class = "rating" alt ="Image">
+        {% endif %}
+        {% if restaurant.rating_star == 5 %}
+        <img src = "{{url_for('static', filename = 'images/Full_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Full_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Full_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Full_Star.png')}}" class = "rating" alt ="Image">
+        <img src = "{{url_for('static', filename = 'images/Full_Star.png')}}" class = "rating" alt ="Image">
+        {% endif %}
+        <span>({{restaurant.review}})</span>
 
         <br>
         <h5 class = "details">Location: </h5> 
-        <a href = "https://www.google.com/maps/place/To+date/@40.6373368,-74.0085175,17z/data=!4m6!3m5!1s0x89c245f96a329afd:0xfb35e59aedbb57b!8m2!3d40.6373368!4d-74.0085175!16s%2Fg%2F11qqhw9zk8?entry=ttu" target = "_blank" class = "location-text">{{restaurant.Location}}</a> 
-        <br>
+        <a href = "{{restaurant.googlelocation}}" target = "_blank" class = "location-text">{{restaurant.Location}}</a> 
         <h5 class = "details"> Price: {{restaurant.prices}}</h5>
+        <br>
         <span><i>{{restaurant.cusine}}</i></span>
 
         <br>
-            <div class="card-body p-0">
-                <div class="row">
-                    <div class="col-4">
-                        <img src="{{ url_for('static', filename='images/Food1.jpg') }}" alt="Image 1" class="img-food">
-                    </div>
-                    <div class="col-4">
-                        <img src="{{ url_for('static', filename='images/Food2.jpg') }}" alt="Image 2" class="img-food">
-                    </div>
-                    <div class="col-4">
-                        <img src="{{ url_for('static', filename='images/Food3.jpg') }}" alt="Image 3" class="img-food">
-                    </div>
-                </div>
-            </div>
+        <br>
+        <div class="gallery">
+        {% for imgs_url in restaurant['galleryurl']%}
+          <img src="{{ imgs_url }}"  class="img-food">
+        {% endfor %}
+        </div>
 
-         </div>
-
+        <br>
          <div class = "button-container">
             <input type="submit", value = "Select">
         </div>
 
         </div>
+
+        </div>
+      </div>
     </div>
-</div>
 {% endfor %}
 
   </body>
